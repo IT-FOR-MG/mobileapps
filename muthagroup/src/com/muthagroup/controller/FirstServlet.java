@@ -38,8 +38,8 @@ public class FirstServlet extends HttpServlet {
 			{
 				 HttpSession session=request.getSession();  
 			     session.setAttribute("user",user);
-			 	 RequestDispatcher view=getServletContext().getRequestDispatcher("/DailyReport");
-			 	 view.forward(request, response);
+			 	 response.sendRedirect("DailyReport");
+			 	
 			}
 			else {
 				response.sendRedirect("index.jsp");

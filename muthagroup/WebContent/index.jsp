@@ -159,10 +159,12 @@ $('.modal').on('shown.bs.modal', function () {
 </head>
 <body>
 <%
-String username=null;
-if ((username=(String)session.getAttribute("user")) != null) 
+
+if ((session.getAttribute("user")!=null)) 
 {
-    request.getRequestDispatcher("mainpage.jsp").include(request, response);  
+	
+	request.getRequestDispatcher("/DailyReport").forward(request,response);
+
 }
 else
 {

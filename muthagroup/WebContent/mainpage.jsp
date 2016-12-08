@@ -220,14 +220,10 @@
 </head>
 <body>
 <%
-String username=null;
-if ((username=(String)session.getAttribute("user")) == null) 
+if ((session.getAttribute("user")!=null)) 
 {
-	out.print("Please login first");  
-    request.getRequestDispatcher("index.jsp").include(request, response);  
-}
-else
-{
+	String username=(String)session.getAttribute("user"); 
+
 %>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -256,20 +252,22 @@ else
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-12 text-left"> 
-    <div class="page-header" align="center">
-     <!--  <h1>Welcome to Mutha Group of Industries</h1>
+<!--     <div class="page-header" align="center">
+      <h1>Welcome to Mutha Group of Industries</h1>
       <blockquote class="blockquote-reverse">
       <p>Maximum production is our Target, Best quality is our Aim.</p>
       </blockquote>
-      <hr> -->
+      <hr>
       
-      <a href="#Report" class="modal-link" data-id="Daily Report" data-toggle="modal" >Get Daily Report</a><!--  | <a href=#Report class="modal-link"  data-toggle="modal" data-id="Monthly Summary Report" >Get Monthly Summary </a>
-      | <a href=#Report class="modal-link" data-id="Daily Supervisor's Report"  data-toggle="modal">Daily Supervisor's Report</a> -->
-      </div>
-      <div id="DailyReport" >		
+       | <a href=#Report class="modal-link"  data-toggle="modal" data-id="Monthly Summary Report" >Get Monthly Summary </a>
+      | <a href=#Report class="modal-link" data-id="Daily Supervisor's Report"  data-toggle="modal">Daily Supervisor's Report</a>
+      </div> -->
+      <div id="DailyReport" class="small" >		
 		         <label>Date:${date}</label> 
-		        
-		         <button onclick="myFunction('DailyReport')"  class="btn btn-default btn-sm" ><span class="glyphicon glyphicon-print"></span> Print</button>
+		      
+		        <!-- <button type="button" data-target="#Report" class="modal-link" data-id="Daily Report" data-toggle="modal" >Get Daily Report</button> -->
+		        <button type="button" class="btn center-block btn-info btn-sm " data-toggle="modal" data-target="#Report">Get Daily Report</button>
+		         <button onclick="myFunction('DailyReport')"  class="btn pull-right btn-default btn-sm " ><span class="glyphicon glyphicon-print"></span> Print</button>
 
 <script>
 function myFunction(divName) {
@@ -285,8 +283,8 @@ function myFunction(divName) {
 </script>
 
 		          	         
-                 <table class="table table-bordered" >         
-                 <tr><th>Items</th><th>Monthly Schedule</th><th>Dispatched</th><th>Vendor</th><th>Total ERP Stock</th><th>WIP</th><th>Packed</th><th>For Packing</th><th>For Inspection</th><th>Total RFD</th><th>Casting Defect</th><th>Machining Defect</th><th>Surface Finishing</th><th>Milling</th><th>Drilling</th><th>VMC1</th><th>VMC2</th></tr>
+                 <table class="table table-condensed table-bordered small" >         
+                 <tr><th>Items</th><th>Monthly Schedule</th><th>Dispatched</th><th>Vendor</th><th>Total ERP Stock</th><th>WIP</th><th>Packed</th><th>For Packing</th><th>For Inspection</th><th>Total RFD</th><th>Casting Defect</th><th>Machining Defect</th><th>Semi Finishing</th><th>Milling</th><th>Drilling</th><th>VMC1</th><th>VMC2</th></tr>
                  <tr><td>ROF 125 CC</td><td>${list.get(0).get(0)}</td><td>${dislist.get(0)}</td><td>MEPL H25</td><td>${stocklist.get(0)}</td><td>${list.get(1).get(3)+list.get(1).get(4)+list.get(1).get(5)+list.get(1).get(6)+list.get(1).get(7)+list.get(1).get(8)+list.get(1).get(9)}</td><td>${list.get(1).get(0)}</td><td>${list.get(1).get(1)}</td><td>${list.get(1).get(2)}</td><td>${list.get(1).get(0)+list.get(1).get(1)+list.get(1).get(2)}</td><td>${list.get(1).get(3)}</td><td>${list.get(1).get(4)}</td><td>${list.get(1).get(5)}</td><td>${list.get(1).get(6)}</td><td>${list.get(1).get(7)}</td><td>${list.get(1).get(8)}</td><td>${list.get(1).get(9)}</td></tr>
                  <tr><td>ROF 100 CC</td><td>${list.get(0).get(1)}</td><td>${dislist.get(1)}</td><td>MEPL H25</td><td>${stocklist.get(1)}</td><td>${list.get(2).get(3)+list.get(2).get(4)+list.get(2).get(5)+list.get(2).get(6)+list.get(2).get(7)+list.get(2).get(8)+list.get(2).get(9)}</td><td>${list.get(2).get(0)}</td><td>${list.get(2).get(1)}</td><td>${list.get(2).get(2)}</td><td>${list.get(2).get(0)+list.get(2).get(1)+list.get(2).get(2)}</td><td>${list.get(2).get(3)}</td><td>${list.get(2).get(4)}</td><td>${list.get(2).get(5)}</td><td>${list.get(2).get(6)}</td><td>${list.get(2).get(7)}</td><td>${list.get(2).get(8)}</td><td>${list.get(2).get(9)}</td></tr>
                  <tr><td>B 104 D</td><td>${list.get(0).get(2)}</td><td>${dislist.get(2)}</td><td>MEPL H25</td><td>${stocklist.get(2)}</td><td>${list.get(3).get(3)+list.get(3).get(4)+list.get(3).get(5)+list.get(3).get(6)+list.get(3).get(7)+list.get(3).get(8)+list.get(3).get(9)}</td><td>${list.get(3).get(0)}</td><td>${list.get(3).get(1)}</td><td>${list.get(3).get(2)}</td><td>${list.get(3).get(0)+list.get(3).get(1)+list.get(3).get(2)}</td><td>${list.get(3).get(3)}</td><td>${list.get(3).get(4)}</td><td>${list.get(3).get(5)}</td><td>${list.get(3).get(6)}</td><td>${list.get(3).get(7)}</td><td>${list.get(3).get(8)}</td><td>${list.get(3).get(9)}</td></tr>
@@ -315,7 +313,7 @@ function myFunction(divName) {
     	   <div class="modal-dialog">
 		     <div class="loginmodal-container">
 				<h1> <label id="lbl">test</label> </h1><br>
-	             <form class="form-inline" action="DailyReport" method="post">
+	             <form class="form-inline" action="DailyReport" method="get">
 	              <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" required />
 	              <input type=submit  class="btn btn-info btn-lg" type="submit" value="Get Report"  autofocus  >
 	            </form>
@@ -325,6 +323,10 @@ function myFunction(divName) {
 	   
 	
 <%
+}
+else
+{
+	response.sendRedirect("index.jsp"); 
 }
 %>
 </body>

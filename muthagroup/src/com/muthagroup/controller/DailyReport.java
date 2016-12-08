@@ -27,7 +27,7 @@ public class DailyReport extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd",Locale.ENGLISH);
 		try { 
