@@ -43,11 +43,7 @@ public class Signup extends HttpServlet {
 			{
 				HttpSession session=request.getSession();  
 			     session.setAttribute("user",user);
-			     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			     Date date=new Date();
-			     request.setAttribute("date",dateFormat.format(date));
-			 	 RequestDispatcher view=getServletContext().getRequestDispatcher("/DailyReport");
-			 	 view.forward(request, response);
+			     response.sendRedirect("DailyReport");
 				 out.println("<div class=\" alert alert-info\" >"+"<strong>Info!</strong> Signup successfully</div>");
 			}
 			else {

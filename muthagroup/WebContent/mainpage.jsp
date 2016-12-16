@@ -312,7 +312,7 @@ function myFunction(divName) {
         <div class="modal fade active" id="Report" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     	   <div class="modal-dialog">
 		     <div class="loginmodal-container">
-				<h1> <label id="lbl">test</label> </h1><br>
+				<h1> <label id="lbl">Get Daily Report</label> </h1><br>
 	             <form class="form-inline" action="DailyReport" method="get">
 	              <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" required />
 	              <input type=submit  class="btn btn-info btn-lg" type="submit" value="Get Report"  autofocus  >
